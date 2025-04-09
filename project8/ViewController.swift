@@ -22,12 +22,22 @@ class ViewController: UIViewController {
     
     //All three of those have the @objc attribute because they are going to be called by the buttons – by Objective-C code – when they are tapped.
     @objc func letterTapped(_ sender: UIButton) {
+        guard let buttonTitle = sender.titleLabel?.text else { return }
+        currentAnswer.text = currentAnswer.text?.appending(buttonTitle)
+        activatedButtons.append(sender)
+        sender.isHidden = true
     }
 
     @objc func submitTapped(_ sender: UIButton) {
     }
 
     @objc func clearTapped(_ sender: UIButton) {
+        currentAnswer.text = ""
+
+        for btn in activatedButtons {
+            btn.isHidden = false
+        }
+        activatedButtons.removeAll()
     }
     
     func loadLevel(){
