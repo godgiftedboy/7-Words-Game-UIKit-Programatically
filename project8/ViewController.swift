@@ -69,7 +69,13 @@ class ViewController: UIViewController {
             answersLabel.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 0.4,constant: -100),
             
             //equal height of both labels
-            answersLabel.heightAnchor.constraint(equalTo: cluesLabel.heightAnchor)
+            answersLabel.heightAnchor.constraint(equalTo: cluesLabel.heightAnchor),
+            
+            
+            currentAnswer.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            currentAnswer.widthAnchor.constraint(equalTo: view.widthAnchor,multiplier: 0.5),
+            currentAnswer.topAnchor.constraint(equalTo: cluesLabel.bottomAnchor,constant: 20),
+            
 
             // more constraints to be added here!
         ])
