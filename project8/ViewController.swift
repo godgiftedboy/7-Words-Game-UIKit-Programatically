@@ -159,12 +159,22 @@ class ViewController: UIViewController {
         submit.setTitle("Submit", for: .normal)
         //added a button target
         submit.addTarget(self, action: #selector(submitTapped), for: .touchUpInside)
+        //adding border
+        submit.layer.borderWidth = 1;
+        submit.layer.borderColor = UIColor.lightGray.cgColor;
+        // Add padding around the title text
+        var config = UIButton.Configuration.filled()
+        // Add padding
+        config.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16)
+        submit.configuration = config
+        
         view.addSubview(submit);
         
         let clear = UIButton(type: .system);
         clear.translatesAutoresizingMaskIntoConstraints = false;
         clear.setTitle("Clear", for: .normal);
         clear.addTarget(self, action: #selector(clearTapped), for: .touchUpInside)
+        clear.configuration = config
         view.addSubview(clear);
         
         //Container view for the 20 buttons
