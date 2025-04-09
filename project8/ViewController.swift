@@ -113,7 +113,21 @@ class ViewController: UIViewController {
 
             // more constraints to be added here!
         ])
+        //Content hugging priority - 250 is default priority value
+        // If this priority is high it means Auto Layout prefers not to stretch it;
+        // If this priority is low, it will be more likely to be stretched.
         
+        //Also refer Content compression resistance priority for more info
+        //not related to our current context
+        
+        //So, To stretch cluesLabel and answersLabel rather than streching the scoreLabel
+        //We set the low priorit to them as below:
+        cluesLabel.setContentHuggingPriority(UILayoutPriority(1), for: .vertical)
+        answersLabel.setContentHuggingPriority(UILayoutPriority(1), for: .vertical)
+        
+        //backgroud colors are given to differentiate the layout sizes
+        cluesLabel.backgroundColor = .yellow
+        answersLabel.backgroundColor = .blue
         buttonsView.backgroundColor = .red
         
         
