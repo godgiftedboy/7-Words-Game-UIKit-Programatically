@@ -85,6 +85,19 @@ class ViewController: UIViewController {
             currentAnswer.widthAnchor.constraint(equalTo: view.widthAnchor,multiplier: 0.5),
             currentAnswer.topAnchor.constraint(equalTo: cluesLabel.bottomAnchor,constant: 20),
             
+            
+            submit.topAnchor.constraint(equalTo: currentAnswer.bottomAnchor),
+            submit.centerXAnchor.constraint(equalTo: view.centerXAnchor,constant: -100),
+            //-100 is given so that it doesnt overlap with the clear button
+            submit.heightAnchor.constraint(equalToConstant: 44),
+            
+            
+            clear.centerXAnchor.constraint(equalTo: view.centerXAnchor,constant: 100),
+            clear.centerYAnchor.constraint(equalTo: submit.centerYAnchor),
+            clear.heightAnchor.constraint(equalToConstant: 44),
+            
+    
+            
 
             // more constraints to be added here!
         ])
