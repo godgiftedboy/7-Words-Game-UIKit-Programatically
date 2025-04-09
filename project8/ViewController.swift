@@ -58,6 +58,11 @@ class ViewController: UIViewController {
         clear.setTitle("Clear", for: .normal);
         view.addSubview(clear);
         
+        //Container view for the 20 buttons
+        let buttonsView = UIView()
+        buttonsView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(buttonsView)
+        
         
         NSLayoutConstraint.activate([
             scoreLabel.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
@@ -96,6 +101,7 @@ class ViewController: UIViewController {
             clear.centerYAnchor.constraint(equalTo: submit.centerYAnchor),
             clear.heightAnchor.constraint(equalToConstant: 44),
             
+           
     
             
 
