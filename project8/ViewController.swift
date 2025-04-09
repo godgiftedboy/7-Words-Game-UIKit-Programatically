@@ -27,8 +27,42 @@ class ViewController: UIViewController {
         activatedButtons.append(sender)
         sender.isHidden = true
     }
+    func levelUp(action: UIAlertAction) {
+        level += 1
+        solutions.removeAll(keepingCapacity: true)
+
+        loadLevel()
+
+        for btn in letterButtons {
+            btn.isHidden = false
+        }
+    }
 
     @objc func submitTapped(_ sender: UIButton) {
+        guard let answerText = currentAnswer.text else { return }
+        print(solutions)
+        if let solutionPosition = solutions.firstIndex(of: answerText) {
+                
+                activatedButtons.removeAll()
+
+                var splitAnswers = answersLabel.text?.components(separatedBy: "\n")
+                //answersLabel has a multiline-string and it is converted into array.
+                splitAnswers?[solutionPosition] = answerText
+                //the converted array's where solution is provided is changed to the answered text.
+                answersLabel.text = splitAnswers?.joined(separator: "\n")
+                //again the array is joined and converted to a string so that I could be displayed in a UILabel as a String.
+
+                currentAnswer.text = ""
+                //reset currentAnswer
+                score += 1
+                //increment score
+
+                if score % 7 == 0 {
+                    let ac = UIAlertController(title: "Well done!", message: "Are you ready for the next level?", preferredStyle: .alert)
+                    ac.addAction(UIAlertAction(title: "Let's go!", style: .default, handler: levelUp))
+                    present(ac, animated: true)
+                }
+            }
     }
 
     @objc func clearTapped(_ sender: UIButton) {
