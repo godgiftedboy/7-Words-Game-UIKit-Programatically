@@ -14,6 +14,22 @@ class ViewController: UIViewController {
     var scoreLabel: UILabel!
     var letterButtons = [UIButton]()
     
+    var activatedButtons = [UIButton]()
+    var solutions = [String]()
+
+    var score = 0
+    var level = 1
+    
+    //All three of those have the @objc attribute because they are going to be called by the buttons – by Objective-C code – when they are tapped.
+    @objc func letterTapped(_ sender: UIButton) {
+    }
+
+    @objc func submitTapped(_ sender: UIButton) {
+    }
+
+    @objc func clearTapped(_ sender: UIButton) {
+    }
+    
     override func loadView() {
         view = UIView()
         view.backgroundColor = .white
@@ -51,11 +67,14 @@ class ViewController: UIViewController {
         let submit = UIButton(type: .system);
         submit.translatesAutoresizingMaskIntoConstraints = false;
         submit.setTitle("Submit", for: .normal)
+        //added a button target
+        submit.addTarget(self, action: #selector(submitTapped), for: .touchUpInside)
         view.addSubview(submit);
         
         let clear = UIButton(type: .system);
         clear.translatesAutoresizingMaskIntoConstraints = false;
         clear.setTitle("Clear", for: .normal);
+        clear.addTarget(self, action: #selector(clearTapped), for: .touchUpInside)
         view.addSubview(clear);
         
         //Container view for the 20 buttons
@@ -139,6 +158,8 @@ class ViewController: UIViewController {
 
                 // give the button some temporary text so we can see it on-screen
                 letterButton.setTitle("WWW", for: .normal)
+                
+                letterButton.addTarget(self, action: #selector(letterTapped), for: .touchUpInside)
 
                 // calculate the frame of this button using its column and row
                 let frame = CGRect(x: col * width, y: row * height, width: width, height: height)
