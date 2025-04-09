@@ -17,7 +17,13 @@ class ViewController: UIViewController {
     var activatedButtons = [UIButton]()
     var solutions = [String]()
 
-    var score = 0
+    var score = 0 {
+        didSet{
+            scoreLabel.text = "Score: \(score)"
+        }
+    }
+    // Property observers, let you execute code whenever a property has changed.
+    // To make them work, we use either didSet to execute code when a property has just been set, or willSet to execute code before a property has been set.
     var level = 1
     
     //All three of those have the @objc attribute because they are going to be called by the buttons – by Objective-C code – when they are tapped.
