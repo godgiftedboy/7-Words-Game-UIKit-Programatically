@@ -48,6 +48,15 @@ class ViewController: UIViewController {
         currentAnswer.isUserInteractionEnabled = false; //read only
         view.addSubview(currentAnswer);
         
+        let submit = UIButton(type: .system);
+        submit.translatesAutoresizingMaskIntoConstraints = false;
+        submit.setTitle("Submit", for: .normal)
+        view.addSubview(submit);
+        
+        let clear = UIButton(type: .system);
+        clear.translatesAutoresizingMaskIntoConstraints = false;
+        clear.setTitle("Clear", for: .normal);
+        view.addSubview(clear);
         
         
         NSLayoutConstraint.activate([
