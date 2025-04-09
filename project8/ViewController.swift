@@ -68,7 +68,11 @@ class ViewController: UIViewController {
                     ac.addAction(UIAlertAction(title: "Let's go!", style: .default, handler: levelUp))
                     present(ac, animated: true)
                 }
-            }
+        }else{
+            let ac = UIAlertController(title: "Opps! Incorrect answer", message: nil, preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "Try again", style: .default))
+            present(ac, animated: true)
+        }
     }
 
     @objc func clearTapped(_ sender: UIButton) {
