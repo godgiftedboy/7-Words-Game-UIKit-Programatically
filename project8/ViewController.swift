@@ -108,9 +108,6 @@ class ViewController: UIViewController {
             buttonsView.topAnchor.constraint(equalTo: submit.bottomAnchor,constant: 20),
             buttonsView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: -20),
             
-    
-            
-
             // more constraints to be added here!
         ])
         //Content hugging priority - 250 is default priority value
@@ -125,10 +122,37 @@ class ViewController: UIViewController {
         cluesLabel.setContentHuggingPriority(UILayoutPriority(1), for: .vertical)
         answersLabel.setContentHuggingPriority(UILayoutPriority(1), for: .vertical)
         
-        //backgroud colors are given to differentiate the layout sizes
-        cluesLabel.backgroundColor = .yellow
-        answersLabel.backgroundColor = .blue
-        buttonsView.backgroundColor = .red
+
+        
+        //20 Buttons code start
+        
+        // set some values for the width and height of each button
+        let width = 150
+        let height = 80
+
+        // create 20 buttons as a 4x5 grid
+        for row in 0..<4 {
+            for col in 0..<5 {
+                // create a new button and give it a big font size
+                let letterButton = UIButton(type: .system)
+                letterButton.titleLabel?.font = UIFont.systemFont(ofSize: 36)
+
+                // give the button some temporary text so we can see it on-screen
+                letterButton.setTitle("WWW", for: .normal)
+
+                // calculate the frame of this button using its column and row
+                let frame = CGRect(x: col * width, y: row * height, width: width, height: height)
+                letterButton.frame = frame
+
+                // add it to the buttons view
+                buttonsView.addSubview(letterButton)
+
+                // and also to our letterButtons array
+                letterButtons.append(letterButton)
+            }
+        }
+        
+        //20 Buttons code end
         
         
     }
