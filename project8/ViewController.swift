@@ -19,6 +19,54 @@ class ViewController: UIViewController {
         view.backgroundColor = .white
         
         //more code to add
+        scoreLabel = UILabel()
+        scoreLabel.translatesAutoresizingMaskIntoConstraints = false
+        scoreLabel.textAlignment = .right
+        scoreLabel.text = "Score: 0"
+        view.addSubview(scoreLabel)
+       
+        cluesLabel = UILabel()
+        cluesLabel.translatesAutoresizingMaskIntoConstraints = false
+        cluesLabel.font = UIFont.systemFont(ofSize: 24)
+        cluesLabel.text = "CLUES"
+        cluesLabel.numberOfLines = 0 //0 - as many lines as the text requires
+        view.addSubview(cluesLabel)
+
+        answersLabel = UILabel()
+        answersLabel.translatesAutoresizingMaskIntoConstraints = false
+        answersLabel.font = UIFont.systemFont(ofSize: 24)
+        answersLabel.text = "ANSWERS"
+        answersLabel.numberOfLines = 0
+        answersLabel.textAlignment = .right
+        view.addSubview(answersLabel)
+        
+        NSLayoutConstraint.activate([
+            scoreLabel.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
+            scoreLabel.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
+            
+            //cluesLable topAnchor starts from the bottomAnchor of scoreLabel
+            cluesLabel.topAnchor.constraint(equalTo: scoreLabel.bottomAnchor),
+            cluesLabel.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor,constant: 100),
+            
+            //Taking 60% of the width and subtracting 100 for margin left
+            cluesLabel.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 0.6,constant: -100),
+            
+            
+            answersLabel.topAnchor.constraint(equalTo: scoreLabel.bottomAnchor),
+            answersLabel.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor,constant: -100),
+            
+            //Taking 40% of the width and subtracting 100 for margin right
+            answersLabel.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 0.4,constant: -100),
+            
+            //equal height of both labels
+            answersLabel.heightAnchor.constraint(equalTo: cluesLabel.heightAnchor)
+
+            // more constraints to be added here!
+        ])
+        
+        cluesLabel.backgroundColor = .red;
+        answersLabel.backgroundColor = .blue;
+        
     }
 
     override func viewDidLoad() {
