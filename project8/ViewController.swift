@@ -102,11 +102,19 @@ class ViewController: UIViewController {
             clear.heightAnchor.constraint(equalToConstant: 44),
             
            
+            buttonsView.widthAnchor.constraint(equalToConstant: 750),
+            buttonsView.heightAnchor.constraint(equalToConstant: 320),
+            buttonsView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            buttonsView.topAnchor.constraint(equalTo: submit.bottomAnchor,constant: 20),
+            buttonsView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: -20),
+            
     
             
 
             // more constraints to be added here!
         ])
+        
+        buttonsView.backgroundColor = .red
         
         
     }
