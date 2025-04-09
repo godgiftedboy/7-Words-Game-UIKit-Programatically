@@ -40,6 +40,16 @@ class ViewController: UIViewController {
         answersLabel.textAlignment = .right
         view.addSubview(answersLabel)
         
+        currentAnswer = UITextField();
+        currentAnswer.translatesAutoresizingMaskIntoConstraints = false;
+        currentAnswer.placeholder = "Tap letter to guess";
+        currentAnswer.textAlignment = .center;
+        currentAnswer.font = .systemFont(ofSize: 44);
+        currentAnswer.isUserInteractionEnabled = false; //read only
+        view.addSubview(currentAnswer);
+        
+        
+        
         NSLayoutConstraint.activate([
             scoreLabel.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
             scoreLabel.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
@@ -64,8 +74,6 @@ class ViewController: UIViewController {
             // more constraints to be added here!
         ])
         
-        cluesLabel.backgroundColor = .red;
-        answersLabel.backgroundColor = .blue;
         
     }
 
