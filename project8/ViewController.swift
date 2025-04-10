@@ -84,7 +84,7 @@ class ViewController: UIViewController {
         activatedButtons.removeAll()
     }
     
-    func loadLevel(){
+    @objc func loadLevel(){
         var clueString = "";
         var solutionString = "";
         var letterBits = [String]();
@@ -111,15 +111,20 @@ class ViewController: UIViewController {
                     }
             }
         }
-        cluesLabel.text = clueString.trimmingCharacters(in: .whitespacesAndNewlines)
-        answersLabel.text = solutionString.trimmingCharacters(in: .whitespacesAndNewlines)
-        letterBits.shuffle()
+         //added delay to check whether the UI loads or not
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { [weak self] in
+        DispatchQueue.main.async { [weak self] in
+            self?.cluesLabel.text = clueString.trimmingCharacters(in: .whitespacesAndNewlines)
+            self?.answersLabel.text = solutionString.trimmingCharacters(in: .whitespacesAndNewlines)
+            letterBits.shuffle()
 
-        if letterBits.count == letterButtons.count {
-            for i in 0 ..< letterButtons.count {
-                letterButtons[i].setTitle(letterBits[i], for: .normal)
+            if letterBits.count == self?.letterButtons.count {
+                for i in 0 ..< (self?.letterButtons.count)!{
+                    self?.letterButtons[i].setTitle(letterBits[i], for: .normal)
+                }
             }
         }
+        
         
         
     }
@@ -284,7 +289,8 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadLevel();
+        
+        performSelector(inBackground: #selector(loadLevel), with: nil)
     }
 
 
